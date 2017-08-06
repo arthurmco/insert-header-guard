@@ -20,10 +20,11 @@
   (interactive "sHeader guard: ")
   (if (is-header-guard-enabled)
       (progn
-	(save-excursion
 	  (insert "#ifndef " guardstr "\n")
 	  (insert "#define " guardstr "\n\n")
-	  (insert "#endif //" guardstr)))
+	  (save-excursion
+	    (insert "\n\n")
+	    (insert "#endif //" guardstr)))
     (error "Header guards are not enabled here")))
 
 (provide 'insert-header-guard)
